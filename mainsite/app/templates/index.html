@@ -3,8 +3,19 @@
 {% block content %}
 
 <div class="home-div">
-    <h1>Home</h1>
-</div>
 
+  <nav class="navbar">
+
+    <p style="color: white; text-align:right;">Hello, <span style="text-transform: capitalize;">{{request.user.first_name}}</span>!</p>
+        {% if user.is_authenticated %}
+        <a class="links-dashboard" href="{% url 'logout' %}">Logout</a>    
+        {% else %}
+        <a class="links-dashboard" href="{% url 'login' %}">Login</a>
+        {% endif %}
+      </nav>
+
+      <h1>Home</h1>
+
+</div>
 
 {% endblock content %}

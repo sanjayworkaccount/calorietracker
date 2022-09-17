@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="register-div">
+    <h2 style="text-align: center;">Register</h2>
+
+    {% if form.errors %}
+            <p class="alert-message-register">There was an error with your form!</p>
+    {% endif %}
+            
+
+    <div class="register-inner-div">
+    <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <!-- {{ form.as_p }} -->
+            <label for="username">Create a Username:</label>
+            <br>
+            {{ form.username }}
+            <br>
+            <label for="first_name">First Name:</label>
+            <br>
+            {{ form.first_name }}
+            <br>
+            <label for="last_name">Last Name:</label>
+            <br>
+            {{ form.last_name }}
+            <br>
+            <label for="email">Email:</label>
+            <br>
+            {{ form.email }}
+            <br>
+            <label for="password1">Create a Password:</label>
+            <br>
+            {{ form.password1 }}
+            <br>
+            <label for="password2">Re-enter your Password:</label>
+            <br>
+            {{ form.password2 }}
+            <br>
+        <input type="submit" value="Submit" class="link-register-page">
+        </form>
+        <a class="back-to-login" href="{% url 'login' %}">&#8678;Back to Login</a>
+    </div>
+</div>
+
+
+{% endblock content %}

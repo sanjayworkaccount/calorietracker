@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="login-div">
+    <h2 style="text-align: center;">Login</h2>
+    <br><br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <form>
+            
+            <!-- Alert message is user login authentication failed -->
+            
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert-message">{{ message }}</div>     
+                {% endfor %}
+            {% endif %}
+
+</div>
+            <br><br>
+            <div class="form-group">
+
+              <!-- <label for="Exampleusername">Username</label> -->
+              <input type="text" class="form-control login-input" name="username" aria-describedby="emailHelp" placeholder="Username">
+            </div>
+            <br>
+            <div class="form-group">
+              <!-- <label for="Examplepassword">Password</label> -->
+              <input type="password" class="form-control register-input" name="password" placeholder="Password">
+            </div>
+        <input type="submit" value="Submit" class="link-login">
+    </form>
+    <a class="link-register" href="{% url 'register' %}">Register</a>
+</div>
+
+
+{% endblock content %}

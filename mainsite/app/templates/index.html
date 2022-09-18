@@ -5,9 +5,7 @@
 <div class="home-div">
 
       <ul class="ul-nav">
-        <li class="li-nav"><a class="a-nav" href="#home">Hello, <span style="text-transform: capitalize;">{{request.user.first_name}}</span>!</a></li>
-        <li class="li-nav"><a class="a-nav" href="#news">News</a></li>
-        <li class="li-nav"><a class="a-nav" href="#contact">Contact</a></li>
+        <li class="li-nav"><a class="a-nav" href="#">Hello, <span style="text-transform: capitalize;">{{request.user.first_name}}</span>!</a></li>
         <li class="li-nav" style="float:right">
           
         {% if user.is_authenticated %}

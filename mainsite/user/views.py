@@ -3,9 +3,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegisterUserForm
+from django.contrib.auth.decorators import user_passes_test
+
 
 # Create your views here.
-
+@user_passes_test(lambda user: not user.username, login_url='dashboard', redirect_field_name=None)
 def login_user(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -26,6 +28,7 @@ def logout_user(request):
     messages.success(request, ("You were Logged Out!"))
     return redirect('login')
 
+@user_passes_test(lambda user: not user.username, login_url='dashboard', redirect_field_name=None)
 def register_user(request):
     if request.method == "POST":
         form = RegisterUserForm(request.POST)

@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     {% load static %}
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
@@ -125,15 +128,40 @@
                     border-radius: .25rem;
                     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
          }
-         .navbar{
-            margin-left: -8px;
-            margin-right: -8px;
-            margin-top: -10px;
-            height: 75px;
-            padding: 10px;
-            text-align: end;
-            background-color: black;
-        }
+        
+
+.ul-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  width: 100%;
+  left: 0%;
+  top: 0%;
+}
+
+.li-nav {
+  float: left;
+}
+
+.li-nav .a-nav {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.li-nav .a-nav:hover:not(.active) {
+  background-color: #111;
+}
+
+.active-nav {
+  background-color: #04AA6D;
+}
+
 
         .login-input{
             padding: 10px;

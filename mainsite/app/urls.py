@@ -2,6 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('dashboard/', views.dashboardPage , name="dashboard"),
-    path('delete/<int:id>/', views.delete_consume, name="delete"),
+    path('dashboard/', views.dashboard , name="dashboard"),
+    path('delete/', views.delete_consume, name="delete"),
 ]

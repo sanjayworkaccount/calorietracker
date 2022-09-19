@@ -2,13 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Food, Consume
 
-# Create your views here.
 @login_required(login_url='login') 
-def dashboardPage(request):
-    return render(request, "index.html")
-
-def index(request):
-
+def dashboard(request):
     if request.method == "POST":
         food_consumed = request.POST['food_consumed']
         consume = Food.objects.get(name=food_consumed)
@@ -21,11 +16,13 @@ def index(request):
     else:
         foods = Food.objects.all()
     consumed_food = Consume.objects.filter(user=request.user)
-    return render(request, 'index.html', {'foods': foods, 'consumed_food': consumed_food})        
+    return render(request, 'index.html', context={'foods': foods, 'consumed_food': consumed_food})        
 
 def delete_consume(request, id):
     consumed_food = Consume.objects.get(id=id)
     if request.method == 'POST':
         consumed_food.delete()
         return redirect('dashboard')
-    return render(request, 'delete.html')
+    else:
+        return render(request, 'delete.html')
+

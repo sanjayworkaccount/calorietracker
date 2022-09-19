@@ -11,7 +11,7 @@
     {% endif %}
             
 
-    <div class="register-inner-div">
+    <div style="border: 1px solid transparent; position:absolute; left:30%; top:17%;">
     <form action="{% url 'register' %}" method="post">
             {% csrf_token %}
             <!-- {{ form.as_p }} -->
@@ -38,10 +38,10 @@
             <label for="password2">Re-enter your Password:</label>
             <br>
             {{ form.password2 }}
-            <br>
-        <input type="submit" value="Submit" class="link-register-page">
+            <br><br>
+        <input type="submit" value="Submit" class="btn btn-primary">
         </form>
-        <a class="back-to-login" href="{% url 'login' %}">&#8678;Back to Login</a>
+        <a class="back-to-login" style="text-decoration: none;" href="{% url 'login' %}">&#8678;Back to Login</a>
     </div>
 </div>
 

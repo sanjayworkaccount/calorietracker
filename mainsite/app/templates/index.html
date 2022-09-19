@@ -32,7 +32,7 @@
                         <option value="{{food.name}}" name="{{food.name}}">{{food.name}}</option>
                         {% endfor %}
                     </select>
-                    <button class="btn" style="background-color: Blue; color:white; margin-left:10px; width: 100px;" type="submit">Add</button>
+                    <button class="btn" style="background-color: #345185; color:white; margin-left:10px; width: 100px;" type="submit">Add</button>
                 </div>
             </form>
         </div>
@@ -59,8 +59,8 @@
                     <h4 style="text-align:center"> Today's Consumption</h4>
                 </div>
 
-                <table id="table" class="table table-striped" style="background-color: #F2D388; position: absolute; width: 700px; margin-left: 30px;">
-                    <tr class="text-black" style="background-color: #C98474; color: white;">
+                <table id="table" class="table table-striped" style="background-color: #7892bf; position: absolute; width: 700px; margin-left: 30px;">
+                    <tr class="text-black" style="background-color: #345185; color: white;">
                         <th style="text-align:center">Food item</th>
                         <th style="text-align:center">Carbs(gm)</th>
                         <th style="text-align:center">Protein(gm)</th>
@@ -70,18 +70,24 @@
                     </tr>
                     {% for a in consumed_food %}
                     <tr>
-                        <td style="text-align:center">{{a.food_consumed.name}}</td>
-                        <td style="text-align:center">{{a.food_consumed.carbs}}</td>
-                        <td style="text-align:center">{{a.food_consumed.protein}}</td>
-                        <td style="text-align:center">{{a.food_consumed.fats}}</td>
-                        <td style="text-align:center">{{a.food_consumed.calories}}</td>
-                        <td style="text-align:center"><a class="btn btn-danger" href="{% url 'delete' %}">X</a>
+                        <td style="text-align:center; color:white;">{{a.food_consumed.name}}</td>
+                        <td style="text-align:center; color:white;">{{a.food_consumed.carbs}}</td>
+                        <td style="text-align:center; color:white;">{{a.food_consumed.protein}}</td>
+                        <td style="text-align:center; color:white;">{{a.food_consumed.fats}}</td>
+                        <td style="text-align:center; color:white;">{{a.food_consumed.calories}}</td>
+                        <td>
+                            <form action=" {% url 'delete' pk=a.id %} " method="post" onsubmit="deleteConfirm(event)">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger" style="text-align: center; position: absolute; right: 7%; margin-top: -5px;">X</button>
+                                
+                            </form> 
                         </td>
                     </tr>
 
+
                     {% endfor %}
 
-                    <tr class="text-black" style="background-color: #874C62; color:white;">
+                    <tr class="text-black" style="background-color: #345185; color:white;">
                         <td style="text-align:center" id="name"><b>Total</b></td>
                         <td style="text-align:center" id="totalCarbs"><b></b></td>
                         <td style="text-align:center" id="totalProtien"><b></b></td>
@@ -95,7 +101,7 @@
     
                 <div class="col-md-5 ">
                   <br><br>
-                    <div class="card-header text-white" style="border-radius: 10px; background-color: #C98474; margin-top: -10px; ">
+                    <div class="card-header text-white" style="border-radius: 10px; background-color: #345185; margin-top: -10px; ">
                         <h4 style="text-align:center">Nutrients breakdown</h4>
                     </div>
                     <div class="col-md-12">
@@ -148,15 +154,15 @@ var table = document.getElementById("table");
               label: 'Count',
               data: [carbsP, protienP, fatsP],
               backgroundColor: [
-                  'rgba(249, 72, 146, 1)',
-                  'rgba(255, 157, 63, 1)',
-                  'rgba(251, 223, 7, 1)',
+                  'rgba(189, 15, 15,1)',
+                  'rgba(51, 204, 51, 1)',
+                  'rgba(0, 191, 255, 1)',
                   
               ],
               borderColor: [
-                  'rgba(249, 72, 146, 1)',
-                  'rgba(255, 157, 63, 1)',
-                  'rgba(251, 223, 7, 1)',
+                  'rgba(189, 15, 15, 1)',
+                  'rgba(51, 204, 51, 1)',
+                  'rgba(0, 191, 255, 1)',
 
               ],
               borderWidth: 1
@@ -164,6 +170,14 @@ var table = document.getElementById("table");
       },
 
   });
+
+  function deleteConfirm(event){
+    
+    if (confirm('Are you sure you want to Delete this item')) {
+} else {
+    event.preventDefault();
+}
+}
   </script>
 
 {% endblock content %}

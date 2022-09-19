@@ -18,7 +18,7 @@ def dashboard(request):
     consumed_food = Consume.objects.filter(user=request.user)
     return render(request, 'index.html', context={'foods': foods, 'consumed_food': consumed_food})        
 
-def delete_consume(request, id):
+def delete_items(request, id):
     consumed_food = Consume.objects.get(id=id)
     if request.method == 'POST':
         consumed_food.delete()
